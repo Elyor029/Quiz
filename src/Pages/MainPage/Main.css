@@ -1,0 +1,55 @@
+.numberQuiz{
+    display: block;
+    font-size: 23px;
+}
+.first-col{
+    display: block;
+}
+.first-select{
+    width: 100%;
+    padding: 5px;
+    background-color:#13ff44;
+    color:white;
+    outline: none;
+    border-radius: 10px;
+    transition: 1s;
+}
+.first-select:hover{
+    background-color: #0012ff;
+}
+.second-col{
+    margin-top: 15px;
+
+}
+.second-select{
+    width: 100%;
+    padding: 5px;
+    background-color:#13ff44;
+    color:white;
+    outline: none;
+    border-radius: 10px;
+    transition: 1s;
+}
+.second-select:hover{
+    background-color: #0012ff;
+}
+.second-col button{
+    width: 200px;
+    margin: 10px auto 0 auto;
+    border: none;
+    background-color: #13ff44;
+    color: black;
+    transition: 0.3s linear;
+    border-radius: 10px;
+    padding: 10px;
+}
+.second-col button:hover{
+    background-color: #0012ff;
+    color: white;
+
+}
+.first-row, .second-row
+{
+    display: flex;
+    justify-content: center;
+}

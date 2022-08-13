@@ -1,0 +1,150 @@
+.tomain{
+    cursor: pointer;
+    font-size: 35px;
+    padding: 10px;
+}
+.container-fluid{
+    background-color: #13ff44;
+    color: white;
+    transition: 0.3s linear;
+}
+.first-cont{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+.first-cont .nowNum{
+    font-size: 30px;
+    margin-top: 20px;
+    margin-right: 13%;
+}
+.first-cont button{
+    width: 100px;
+    height: 50px;
+    margin-top: 20px;
+    background-color: #ff5a39;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+.navigatebtn
+{
+    width: 107px !important;
+    margin-right: 5px;
+    margin-bottom: 4px;
+    border-radius: 4px;
+    border:1px solid silver;
+    background-color: white;
+    color: black;
+    transition: 0.3s linear;
+}
+.navigatebtn:hover
+{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    background-color: #0012ff;
+    color: white;
+}
+.box
+{
+    width: 100px;
+    margin-right:10px ;
+}
+.col-1{
+ width: 10% !important;
+}
+.divcha{
+    width:  12% !important;
+}
+.second-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.answerbtn{
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid gray;
+    height: 50px;
+    background-color: white;
+}
+.card{
+    width: 900px;
+    height: 900px;
+    margin: 30px auto 0 auto;
+}
+.third-row
+{
+    display: flex;
+    justify-content: center;
+}
+.p1{
+    margin: 0 auto;
+    font-size: 30px;
+}
+.nowNum{
+    display: flex;
+}
+.css-1aquho2-MuiTabs-indicator{
+    display: none;
+}
+.tabs button{
+    width: 10% !important;
+
+}
+.css-heg063-MuiTabs-flexContainer
+{
+    flex-wrap: wrap;
+}
+.css-1h9z7r5-MuiButtonBase-root-MuiTab-root
+{
+    width: 10%;
+}
+.css-1gsv261{
+    border-bottom: none;
+}
+.activebtn
+{
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid gray;
+    height: 50px;
+    background-color: #ccffd8;
+}
+.trueAnswer{
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid gray;
+    height: 50px;
+    background-color: #13ff44;
+    color: white;
+}
+.falseAnswer
+{
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid gray;
+    height: 50px;
+    background-color: #ff6868;
+    color: white;
+}
+.choosen{
+
+}
+.css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected
+{
+    background-color: #0012ff !important;
+    color: white !important;
+}
+a{
+    text-decoration: none !important;
+    color: white !important;
+}
+.Go-home{
+    width: 100px;
+    border: none;
+    border-bottom: 1px solid gray;
+    border-radius: 5px;
+    height: 38px;
+    background-color: #0012ff;
+
+}
