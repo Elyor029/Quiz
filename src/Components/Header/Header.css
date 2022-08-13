@@ -108,7 +108,7 @@
     border: none;
     border-bottom: 1px solid gray;
     height: 50px;
-    background-color: #ccffd8;
+    background-color: #E5E5E5;
 }
 .trueAnswer{
     width: 100%;
@@ -127,14 +127,7 @@
     background-color: #ff6868;
     color: white;
 }
-.choosen{
 
-}
-.css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected
-{
-    background-color: #0012ff !important;
-    color: white !important;
-}
 a{
     text-decoration: none !important;
     color: white !important;
@@ -147,4 +140,63 @@ a{
     height: 38px;
     background-color: #0012ff;
 
+}
+.nextbtn
+{
+    width: 10%;
+    border: 1px solid;
+    border-radius: 5px;
+    background-color: #0012ff;
+    color: white;
+}
+.previousbtn{
+    width: 10%;
+    border: 1px solid;
+    border-radius: 5px;
+    background-color: #0012ff;
+    color: white;
+}
+
+.submitbtn
+{
+    width: 10%;
+    border: 1px solid;
+    border-radius: 5px;
+    background-color: #02897A;
+    color: white;
+}
+button:disabled,
+button[disabled]{
+    opacity: 0.2;
+}
+
+.tabTrue{
+    background-color: #13ff44;
+    color: white;
+}
+.tabFalse{
+    background-color: #ff6868;
+    color: white;
+}
+
+
+
+
+
+
+
+@media (max-width: 992px) {
+    .card{
+        width: auto;
+        height: auto;
+    }
+    .submitbtn{
+        width: 30%;
+    }
+    .nextbtn{
+        width: 30%;
+    }
+    .previousbtn{
+        width: 30%;
+    }
 }

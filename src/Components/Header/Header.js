@@ -14,10 +14,9 @@ import {Button, Modal, ModalBody, ModalFooter, ModalHeader} from "reactstrap";
 
 const Header = () => {
 
-    const {questions, number, nowValue,onOpened} = useSelector(state => state.questionReducer)
+    const {questions, number, nowValue, onOpened} = useSelector(state => state.questionReducer)
     const location = useLocation();
     const dispatch = useDispatch();
-
 
 
     const [open, setOpen] = useState(false)
@@ -40,7 +39,7 @@ const Header = () => {
     const [choose, setChoose] = useState(false)
     const [choosen, setChoosen] = useState(true)
     const [modal, setModal] = useState(false)
-
+    const [myStyle,setMyStyle]=useState(false)
 
 
     useEffect(() => {
@@ -114,8 +113,7 @@ const Header = () => {
                 setFinish(true)
                 setClicked(clicked + 1)
             }
-        }
-        else {
+        } else {
             if (btn2 === false && randomNum === 2) {
                 setAnswer2(2)
             }
@@ -337,12 +335,26 @@ const Header = () => {
     }, [value])
 
 
+    const handleClick = (id) => {
+        if (answer1===1 || answer1===0 || answer2===1 || answer2===0 || answer3===1 || answer3===0 || answer4===1 || answer4===0 ){
+        setMyStyle(prevState => ({
+            ...myStyle,
+            [id]: !prevState[id]
+    }))}
+
+    }
+
+    let clickAnswer = () => myStyle ? setMyStyle(false) : setMyStyle(true);
+    let answerColor = myStyle ? "tabTrue" : "tabFalse";
+
     return (
         <>
 
 
+                {/*<li className={`quizChoices ${answerColor}${index}`}*/}
+                {/*    onClick={() => clickAnswer()} */}
             <div className="container-fluid" style={
-                open ? {backgroundColor: "#13ff44"} : {backgroundColor: "#0012ff"}
+                open ? {backgroundColor: "#02897A"} : {backgroundColor: "#0012ff"}
             }>
                 <div className="container first-cont">
                     <p onClick={() => toMain()} className="tomain">FinalExam</p>
@@ -362,7 +374,8 @@ const Header = () => {
                                 {counter} javobni tog'ri topdingiz
                             </ModalBody>
                             <ModalFooter>
-                                    <button className={"Go-home"} onClick={() => toMain()}><Link to={"/Main"}>Go Home</Link></button>
+                                <button className={"Go-home"} onClick={() => toMain()}><Link to={"/Main"}>Go Home</Link>
+                                </button>
                                 <Button color="secondary" onClick={finishButton}>Cancel</Button>
                             </ModalFooter>
                         </Modal>
@@ -377,50 +390,57 @@ const Header = () => {
                                          aria-label="lab API tabs example">
                                     {
                                         questions?.map((item, index) => (
-                                            <Tab className={choosen ? "choosen Tabs" : "Tabs"}
+                                            <Tab className={`Tabs`}
+                                                 onClick={() => clickAnswer(index)}
                                                  label={index + 1}
                                                  value={index + 1}/>
                                         ))
                                     }
                                 </TabList>
                             </Box>
-                            {
-                                questions?.map((item, index) =>
-                                    (
-                                        <TabPanel value={index + 1} tabIndex={index + 1}>
-                                            <div className="card">
-                                                <div className="card-header">
-                                                    <h3>{decode(item.question)}</h3>
-                                                </div>
-                                                <div className="card-body">
-                                                    <button
-                                                        onClick={btnclicked1}
-                                                        className={answer1 === 2 ? (btn1 ? "activebtn" : "answerbtn") : answer1 === 1 ? ("trueAnswer") : answer1 === 0 ? "falseAnswer" : ""}>{randomNum === 1 ? decode(item.correct_answer) : decode(item.incorrect_answers[0])}</button>
-                                                    <button
-                                                        onClick={btnclicked2}
-                                                        className={answer2 === 2 ? (btn2 ? "activebtn" : "answerbtn") : answer2 === 1 ? ("trueAnswer") : answer2 === 0 ? "falseAnswer" : ""}>{randomNum === 2 ? decode(item.correct_answer) : decode(item.incorrect_answers[1])}</button>
-                                                    <button
-                                                        onClick={btnclicked3}
-                                                        className={answer3 === 2 ? (btn3 ? "activebtn" : "answerbtn") : answer3 === 1 ? ("trueAnswer") : answer3 === 0 ? "falseAnswer" : ""}>{randomNum === 3 ? decode(item.correct_answer) : decode(item.incorrect_answers[2])}</button>
-                                                    <button
-                                                        onClick={btnclicked4}
-                                                        className={answer4 === 2 ? (btn4 ? "activebtn" : "answerbtn") : answer4 === 1 ? ("trueAnswer") : answer4 === 0 ? "falseAnswer" : ""}>{randomNum === 1 ? decode(item.incorrect_answers[0]) : "" || randomNum === 3 ? decode(item.incorrect_answers[2]) : "" || randomNum === 2 ? decode(item.incorrect_answers[1]) : "" || randomNum === 4 ? decode(item.correct_answer) : decode(item.incorrect_answers[0])}</button>
+                            <div className="row">
+                                <div className="col-12">
+                                    {
+                                        questions?.map((item, index) =>
+                                            (
+                                                <TabPanel value={index + 1} tabIndex={index + 1}>
+                                                    <div className="card">
+                                                        <div className="card-header">
+                                                            <h3>{decode(item.question)}</h3>
+                                                        </div>
+                                                        <div className="card-body">
+                                                            <button
+                                                                onClick={btnclicked1}
+                                                                className={answer1 === 2 ? (btn1 ? "activebtn" : "answerbtn") : answer1 === 1 ? ("trueAnswer") : answer1 === 0 ? "falseAnswer" : ""}>{randomNum === 1 ? decode(item.correct_answer) : decode(item.incorrect_answers[0])}</button>
+                                                            <button
+                                                                onClick={btnclicked2}
+                                                                className={answer2 === 2 ? (btn2 ? "activebtn" : "answerbtn") : answer2 === 1 ? ("trueAnswer") : answer2 === 0 ? "falseAnswer" : ""}>{randomNum === 2 ? decode(item.correct_answer) : decode(item.incorrect_answers[1])}</button>
+                                                            <button
+                                                                onClick={btnclicked3}
+                                                                className={answer3 === 2 ? (btn3 ? "activebtn" : "answerbtn") : answer3 === 1 ? ("trueAnswer") : answer3 === 0 ? "falseAnswer" : ""}>{randomNum === 3 ? decode(item.correct_answer) : decode(item.incorrect_answers[2])}</button>
+                                                            <button
+                                                                onClick={btnclicked4}
+                                                                className={answer4 === 2 ? (btn4 ? "activebtn" : "answerbtn") : answer4 === 1 ? ("trueAnswer") : answer4 === 0 ? "falseAnswer" : ""}>{randomNum === 1 ? decode(item.incorrect_answers[0]) : "" || randomNum === 3 ? decode(item.incorrect_answers[2]) : "" || randomNum === 2 ? decode(item.incorrect_answers[1]) : "" || randomNum === 4 ? decode(item.correct_answer) : decode(item.incorrect_answers[0])}</button>
 
-                                                </div>
-                                                <div className="card-footer d-flex justify-content-between">
-                                                    <button className="previousbtn" onClick={previousTab}>Previous
-                                                    </button>
-                                                    <button className={"submitbtn"}
-                                                            onClick={submit}
-                                                            disabled={btn1 === false && btn2 === false && btn3 === false && btn4 === false || choose}>Submit
-                                                    </button>
-                                                    <button className={"nextbtn"} onClick={nextTab}>Next</button>
-                                                </div>
+                                                        </div>
+                                                        <div className="card-footer d-flex justify-content-between">
+                                                            <button className="previousbtn"
+                                                                    onClick={previousTab}>Previous
+                                                            </button>
+                                                            <button className={"submitbtn"}
+                                                                    onClick={submit}
+                                                                    disabled={btn1 === false && btn2 === false && btn3 === false && btn4 === false || choose}>Submit
+                                                            </button>
+                                                            <button className={"nextbtn"} onClick={nextTab}>Next
+                                                            </button>
+                                                        </div>
 
-                                            </div>
-                                        </TabPanel>
-                                    ))
-                            }
+                                                    </div>
+                                                </TabPanel>
+                                            ))
+                                    }
+                                </div>
+                            </div>
                         </TabContext>
                     </div>
                 </>}
