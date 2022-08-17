@@ -165,9 +165,8 @@ a{
     background-color: #02897A;
     color: white;
 }
-button:disabled,
-button[disabled]{
-    opacity: 0.2;
+.submitbtn:disabled{
+    opacity: 0.3;
 }
 
 .tabTrue{
@@ -178,7 +177,9 @@ button[disabled]{
     background-color: #ff6868;
     color: white;
 }
-
+.nextbtn:disabled{
+    opacity: 0.3;
+}
 
 
 

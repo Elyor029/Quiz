@@ -3,7 +3,6 @@ import {Link, useHistory, useLocation} from "react-router-dom";
 import "./Header.css";
 import {getCategory, getQuestions} from "../../Redux/Actions/questionActions";
 import {useDispatch, useSelector} from "react-redux";
-import Variants from "../Variants/Variants";
 import {decode} from "html-entities";
 import {Box, Tab, Tabs} from "@mui/material";
 import {TabList, TabContext, TabPanel} from '@mui/lab';
@@ -37,9 +36,10 @@ const Header = () => {
     const [answer4, setAnswer4] = useState(2)
     const [counter, setCounter] = useState(0)
     const [choose, setChoose] = useState(false)
-    const [choosen, setChoosen] = useState(true)
+    const [choosen, setChoosen] = useState(false)
     const [modal, setModal] = useState(false)
-    const [myStyle,setMyStyle]=useState(false)
+    const [myStyle, setMyStyle] = useState(false)
+    const [Index,setIndex]=useState(0)
 
 
     useEffect(() => {
@@ -132,29 +132,33 @@ const Header = () => {
         }
     }
     const nextTab = () => {
-        if (value !== (number > 0 ? number : defaultNumber)) {
-            setValue(value + 1);
-        }
-        if (value + 1) {
-            setChoose(false)
-            setAnswer1(2)
-            setAnswer2(2)
-            setAnswer3(2)
-            setAnswer4(2)
-        }
-        if (finish === true) {
-            if (btn2 === false && randomNum === 2) {
-                setAnswer2(1)
+        if (choosen === true) {
+            if (value !== (number > 0 ? number : defaultNumber)) {
+                setValue(value + 1);
             }
-            if (btn3 === false && randomNum === 3) {
-                setAnswer3(1)
+
+            if (value + 1) {
+                setChoose(false)
+                setAnswer1(2)
+                setAnswer2(2)
+                setAnswer3(2)
+                setAnswer4(2)
             }
-            if (btn1 === false && randomNum === 1) {
-                setAnswer1(1)
+            if (finish === true) {
+                if (btn2 === false && randomNum === 2) {
+                    setAnswer2(1)
+                }
+                if (btn3 === false && randomNum === 3) {
+                    setAnswer3(1)
+                }
+                if (btn1 === false && randomNum === 1) {
+                    setAnswer1(1)
+                }
+                if (btn4 === false && randomNum === 4) {
+                    setAnswer4(1)
+                }
             }
-            if (btn4 === false && randomNum === 4) {
-                setAnswer4(1)
-            }
+            setChoosen(false)
         }
     }
     const previousTab = () => {
@@ -204,8 +208,7 @@ const Header = () => {
             if (btn4 === true && randomNum === 4) {
                 setAnswer4(1)
             }
-
-
+            setChoosen(true)
         }
         if (btn1 === true && randomNum !== 1 || btn2 === true && randomNum !== 2 || btn3 === true && randomNum !== 3 || btn4 === true && randomNum !== 4) {
             setCounter(counter)
@@ -259,6 +262,7 @@ const Header = () => {
                 }
             }
         }
+        setChoosen(true)
     }
 
 
@@ -334,13 +338,13 @@ const Header = () => {
         )
     }, [value])
 
-
     const handleClick = (id) => {
-        if (answer1===1 || answer1===0 || answer2===1 || answer2===0 || answer3===1 || answer3===0 || answer4===1 || answer4===0 ){
-        setMyStyle(prevState => ({
-            ...myStyle,
-            [id]: !prevState[id]
-    }))}
+        if (answer1 === 1 || answer1 === 0 || answer2 === 1 || answer2 === 0 || answer3 === 1 || answer3 === 0 || answer4 === 1 || answer4 === 0) {
+            setMyStyle(prevState => ({
+                ...myStyle,
+                [id]: !prevState[id]
+            }))
+        }
 
     }
 
@@ -351,8 +355,8 @@ const Header = () => {
         <>
 
 
-                {/*<li className={`quizChoices ${answerColor}${index}`}*/}
-                {/*    onClick={() => clickAnswer()} */}
+            {/*<li className={`quizChoices ${answerColor}${index}`}*/}
+            {/*    onClick={() => clickAnswer()} */}
             <div className="container-fluid" style={
                 open ? {backgroundColor: "#02897A"} : {backgroundColor: "#0012ff"}
             }>
@@ -391,7 +395,8 @@ const Header = () => {
                                     {
                                         questions?.map((item, index) => (
                                             <Tab className={`Tabs`}
-                                                 onClick={() => clickAnswer(index)}
+                                                 wrapped
+                                                 disabled={finish===false}
                                                  label={index + 1}
                                                  value={index + 1}/>
                                         ))
@@ -424,14 +429,13 @@ const Header = () => {
 
                                                         </div>
                                                         <div className="card-footer d-flex justify-content-between">
-                                                            <button className="previousbtn"
-                                                                    onClick={previousTab}>Previous
-                                                            </button>
                                                             <button className={"submitbtn"}
                                                                     onClick={submit}
                                                                     disabled={btn1 === false && btn2 === false && btn3 === false && btn4 === false || choose}>Submit
                                                             </button>
-                                                            <button className={"nextbtn"} onClick={nextTab}>Next
+                                                            <button
+                                                                className={"nextbtn"}
+                                                                onClick={nextTab} disabled={choosen===false}>Next
                                                             </button>
                                                         </div>
 

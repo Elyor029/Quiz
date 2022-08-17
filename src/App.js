@@ -5,7 +5,6 @@ import "bootstrap/dist/js/bootstrap.bundle";
 import {Redirect, Route, Switch} from "react-router-dom";
 import Main from "./Pages/MainPage/Main";
 import Quiz from "./Pages/Quiz/Quiz";
-import Variants from "./Components/Variants/Variants";
 
 function App() {
     return (
